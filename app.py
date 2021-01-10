@@ -3,7 +3,7 @@ import pandas as pd
 import xgboost as xgb
 from flask import Flask, request, jsonify, render_template
 import pickle
-import sklearn
+from sklearn.preprocessing import OneHotEncoder 
 from ohe import OneHotEncoder, dataframe
 from pandas import DataFrame
 
@@ -28,7 +28,6 @@ def predict():
     categorical_values = ['Gender','Married','Dependents','Education','Self_Employed','Credit_History','Property_Area']
     cat_features = [request.form.get(key) for key in categorical_values]
     int_features = [int(request.form.get(key)) for key in numerical_values]
-    data = dataframe(categorical_values,cat_features)
     ohe = encoder.transform(np.array(cat_features).reshape(1,-1))
     scaled_features = scaler.transform(np.array(int_features).reshape(1,-1))
     num_data = DataFrame(scaled_features)
