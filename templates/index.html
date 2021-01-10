@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict Loan</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <h2>Gender</h2>
+      <div class="switch-field">
+        <input type="radio" id="male" name="Gender" value="Male"/>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="Gender" value="Female" checked/>
+        <label for="female">Female</label>
+      <h2>Married</h2>
+      <div class="switch-field">
+        <input type="radio" id="married_yes" name="Married" value="Yes"/>
+        <label for="married_yes">Yes</label>
+        <input type="radio" id="married_no" name="Married" value="No" checked/>
+        <label for="married_no">No</label>  
+      <h2>Dependents</h2>
+      <div class="switch-field">
+        <input type="radio" id="dependent_0" name="Dependents" value="0"/>
+        <label for="dependent_0">0</label>
+        <input type="radio" id="dependent_1" name="Dependents" value="1" checked/>
+        <label for="dependent_1">1</label>
+        <input type="radio" id="dependent_2" name="Dependents" value="2" checked/>
+        <label for="dependent_2">2</label>
+        <input type="radio" id="dependent_3+" name="Dependents" value="3+" checked/>
+        <label for="dependent_3+">3+</label>
+      <h2>Education</h2>
+      <div class="switch-field">
+        <input type="radio" id="graduate" name="Education" value="Graduate"/>
+        <label for="graduate">Graduate</label>
+        <input type="radio" id="not_graduate" name="Education" value="Not Graduate" checked/>
+        <label for="not_graduate">Not Graduate</label>
+      <h2>Self Employed</h2>
+      <div class="switch-field">
+        <input type="radio" id="self_yes" name="Self_Employed" value="Yes"/>
+        <label for="self_yes">Yes</label>
+        <input type="radio" id="self_no" name="Self_Employed" value="No" checked/>
+        <label for="self_no">No</label>  
+      <h2>ApplicantIncome</h2>
+      <input type="text" name="ApplicantIncome" placeholder="Applicant Income" required="required" />
+      <h2>Coapplicant Income</h2>
+      <input type="text" name="CoapplicantIncome" placeholder="Co-applicant Income" required="required" />
+      <h2>Loan Amount</h2>
+      <input type="text" name="LoanAmount" placeholder="Loan Amount" required="required" />
+      <h2>Loan Amount Term</h2>
+		  <input type="text" name="Loan_Amount_Term" placeholder="Loan Amount Term" required="required" />
+      <h2>Credit_History</h2>
+      <div class="switch-field">
+        <input type="radio" id="cr_yes" name="Credit_History" value=1.0/>
+        <label for="cr_yes">1.0</label>
+        <input type="radio" id="self_no" name="Credit_History" value=0.0 checked/>
+        <label for="cr_no">0.0</label>
+      <h2>Property Area</h2>
+      <div class="switch-field">
+        <input type="radio" id="rural" name="Property_Area" value='Rural'/>
+        <label for="rural">Rural</label>
+        <input type="radio" id="semiurban" name="Property_Area" value='Semiurban' checked/>
+        <label for="semiurban">Semiurban</label>
+        <input type="radio" id="urban" name="Property_Area" value='Urban' checked/>
+        <label for="urban">Urban</label>
+      </div>  
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
