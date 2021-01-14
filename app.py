@@ -3,7 +3,7 @@ import pandas as pd
 import xgboost as xgb
 from flask import Flask, request, jsonify, render_template
 import pickle
-from sklearn.preprocessing import OneHotEncoder 
+from sklearn.preprocessing import OneHotEncoder as SklearnOneHotEncoder
 from ohe import dataframe
 from pandas import DataFrame
 class OneHotEncoder(SklearnOneHotEncoder):
